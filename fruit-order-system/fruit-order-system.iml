@@ -23,7 +23,7 @@
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: javax.jms:javax.jms-api:2.0.1" level="project" />
     <orderEntry type="module-library">
-      <library name="Maven: com.ibm:allclient:unknown">
+      <library name="Maven: com.ibm:allclient:9">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/com.ibm.mq.allclient.jar!/" />
         </CLASSES>
