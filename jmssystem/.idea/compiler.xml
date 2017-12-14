@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="fruit-ordering-system" />
         <module name="jmssystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jmssystem" target="1.5" />
+      <module name="fruit-ordering-system" target="1.8" />
+      <module name="jmssystem" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
