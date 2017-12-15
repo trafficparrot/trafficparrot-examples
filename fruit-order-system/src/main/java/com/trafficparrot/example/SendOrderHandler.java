@@ -42,6 +42,13 @@ class SendOrderHandler extends AbstractHandler {
             }
         } catch (JMSException  e) {
             throw new ServletException(e);
+        }  catch (NoClassDefFoundError  e) {
+            if (e.getMessage().contains("com/ibm")) {
+                System.err.println("In order to use IBM® MQ you need jar files that will allow Traffic Parrot to establish connections with MQ. " +
+                        "See http://trafficparrot.com/documentation/3.10.x/faqs.html#ibm-mq-connection for more information.");
+            } else {
+                throw e;
+            }
         }
     }
 
