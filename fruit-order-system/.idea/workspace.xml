@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a62c59-6682-4907-865c-fdfc4ab1ded6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/release/fruit-order-system/lib/fruit-order-system-1.0-SNAPSHOT-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/release/fruit-order-system/lib/fruit-order-system-1.0-SNAPSHOT-jar-with-dependencies.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/trafficparrot/example/SendOrderHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/trafficparrot/example/SendOrderHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,21 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rsp.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tmp/rsp.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SendOrderHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/trafficparrot/example/SendOrderHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
+            <state relative-caret-position="356">
+              <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -156,6 +146,13 @@
             <path>
               <item name="fruit-order-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="fruit-order-system" type="462c0819:PsiDirectoryNode" />
+              <item name="release" type="462c0819:PsiDirectoryNode" />
+              <item name="fruit-order-system" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fruit-order-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fruit-order-system" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -182,16 +179,16 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/release/fruit-order-system" />
-      <recent name="$PROJECT_DIR$/release/fruit-order-system/lib" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/release/fruit-order-system/lib" />
       <recent name="$PROJECT_DIR$/release/fruit-order-system" />
       <recent name="$PROJECT_DIR$/release" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/release/fruit-order-system" />
+      <recent name="$PROJECT_DIR$/release/fruit-order-system/lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -359,7 +356,7 @@
       <workItem from="1513264256204" duration="3207000" />
       <workItem from="1513291858447" duration="607000" />
       <workItem from="1513360291077" duration="5000" />
-      <workItem from="1513362674597" duration="151000" />
+      <workItem from="1513362674597" duration="393000" />
     </task>
     <task id="LOCAL-00001" summary="generated project">
       <created>1513166409029</created>
@@ -389,11 +386,25 @@
       <option name="project" value="LOCAL" />
       <updated>1513290859184</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="better UX">
+      <created>1513362831011</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1513362831011</updated>
+    </task>
+    <task id="LOCAL-00006" summary="better UX">
+      <created>1513362934773</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1513362934773</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16972000" />
+    <option name="totallyTimeSpent" value="17214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -407,8 +418,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36020944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4408377" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36020944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32460734" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22719735" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -468,7 +479,8 @@
     <MESSAGE value="implemented fruit ordering" />
     <MESSAGE value="readme" />
     <MESSAGE value="created a release directory manually" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a release directory manually" />
+    <MESSAGE value="better UX" />
+    <option name="LAST_COMMIT_MESSAGE" value="better UX" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -756,8 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/trafficparrot/example/SendOrderHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="38" column="67" lean-forward="true" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
+        <state relative-caret-position="356">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
           <folding />
         </state>
       </provider>
