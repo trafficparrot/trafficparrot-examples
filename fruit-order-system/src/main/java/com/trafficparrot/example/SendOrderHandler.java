@@ -56,7 +56,7 @@ class SendOrderHandler extends AbstractHandler {
         try (Connection connection = getConnection()) {
             connection.start();
             Session session = connection.createSession();
-            Queue queue = session.createQueue("DEV.QUEUE.2");
+            Queue queue = session.createQueue(properties.getProperty("ibmmq.confirmation.queue"));
             MessageConsumer messageConsumer = session.createConsumer(queue);
 
             TextMessage message;
@@ -83,7 +83,7 @@ class SendOrderHandler extends AbstractHandler {
         try (Connection connection = getConnection()) {
             connection.start();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            Queue queue = session.createQueue("DEV.QUEUE.1");
+            Queue queue = session.createQueue(properties.getProperty("ibmmq.order.queue"));
             MessageProducer messageProducer = session.createProducer(queue);
             TextMessage textMessage = session.createTextMessage(message);
             messageProducer.send(textMessage);
