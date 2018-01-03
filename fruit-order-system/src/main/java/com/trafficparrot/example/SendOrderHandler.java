@@ -86,11 +86,11 @@ class SendOrderHandler extends AbstractHandler {
             connection.start();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             String orderQueueName = properties.getProperty("ibmmq.order.queue");
-            System.out.println("Sending message to " + orderQueueName);
             Queue queue = session.createQueue(orderQueueName);
             MessageProducer messageProducer = session.createProducer(queue);
             TextMessage textMessage = session.createTextMessage(message);
             messageProducer.send(textMessage);
+            System.out.println("Sending message to " + orderQueueName + ": " + textMessage);
         }
     }
 
