@@ -222,6 +222,7 @@ public class ThriftCalculatorClient extends Application {
         private static final String DISPLAY_SUBTRACT = "-";
         private static final String DISPLAY_ADD = "+";
         private static final String DISPLAY_CANCEL = "c";
+        private static final int DEFAULT_PORT = 5572;
 
         private final AtomicInteger historySequence = new AtomicInteger();
 
@@ -237,7 +238,7 @@ public class ThriftCalculatorClient extends Application {
             total = 0;
             method = "";
             host = "localhost";
-            port = 5580;
+            port = DEFAULT_PORT;
         }
 
         public void setHost(String host) {
