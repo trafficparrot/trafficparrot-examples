@@ -44,7 +44,6 @@ package com.trafficparrot.example;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -64,36 +63,37 @@ public class ThriftCalculatorClient extends Application {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ThriftCalculatorClient.class);
 
-    private Stage window;
-    private Display display;
+    private final Display display = new Display();
+    private final TextField hostAndPortField = new TextField();
+    private final Label messageLabel = new Label();
+    private final Label currentLabel = new Label();
+    private final Label totalLabel = new Label();
 
     public static void main(String[] args) {
+        LOGGER.info("Starting Thrift calculator client");
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        window = primaryStage;
-        display = new Display();
-
+    public void start(Stage window) {
         window.setTitle("Thrift Remote Calculator Client");
-        paint();
+        window.setScene(layoutScene());
+        display.paint();
         window.show();
     }
 
-    private void paint() {
+    private Scene layoutScene() {
         VBox layout = new VBox();
         GridPane numberPad = addNumberButtons();
 
         layout.setPadding(new Insets(5, 0, 0, 0));
-        layout.getChildren().addAll(display.getTotal(), display.getCurrent(), numberPad, display.getMessage(), display.hostAndPortField(), previousButton());
+        layout.getChildren().addAll(totalLabel, currentLabel, numberPad, messageLabel, hostAndPortField, previousButton());
 
         VBox.setVgrow(numberPad, Priority.ALWAYS);
 
         Scene scene = new Scene(layout, 300, 500);
         scene.getStylesheets().add("thrift.calculator.client.css");
-
-        window.setScene(scene);
+        return scene;
     }
 
     public Button previousButton() {
@@ -101,7 +101,7 @@ public class ThriftCalculatorClient extends Application {
         button.setMaxWidth(Double.MAX_VALUE);
         button.setOnAction(e -> {
             display.previous();
-            this.paint();
+            display.paint();
         });
         return button;
     }
@@ -113,28 +113,28 @@ public class ThriftCalculatorClient extends Application {
         ColumnConstraints[] colConst = new ColumnConstraints[4];
 
         // Set row constraints making rows responsive
-        for(int i = 0; i <= 4; i ++) {
+        for (int i = 0; i <= 4; i++) {
             rowConst[i] = new RowConstraints();
             rowConst[i].setPercentHeight(20);
         }
         layout.getRowConstraints().addAll(rowConst[0], rowConst[1], rowConst[2], rowConst[3], rowConst[4]);
 
         // Set column constraints making columns responsive
-        for(int i = 0; i <= 3; i ++) {
+        for (int i = 0; i <= 3; i++) {
             colConst[i] = new ColumnConstraints();
             colConst[i].setPercentWidth(25);
         }
         layout.getColumnConstraints().addAll(colConst[0], colConst[1], colConst[2], colConst[3]);
 
         // Create 0-9 buttons
-        for(int i = 0; i <= 9; i++) {
+        for (int i = 0; i <= 9; i++) {
             int value = i;
             btnArray[i] = new Button(Integer.toString(i));
             btnArray[i].setMaxWidth(Double.MAX_VALUE);
             btnArray[i].setMaxHeight(Double.MAX_VALUE);
             btnArray[i].setOnAction(e -> {
                 display.inputNumber(value);
-                this.paint();
+                display.paint();
             });
         }
 
@@ -152,71 +152,83 @@ public class ThriftCalculatorClient extends Application {
         GridPane.setColumnSpan(btnArray[0], 3);
 
         // Divide button
-        Button divide = new Button("/");
+        Button divide = new Button(Display.DISPLAY_DIVIDE);
         divide.setMaxWidth(Double.MAX_VALUE);
         divide.setMaxHeight(Double.MAX_VALUE);
         divide.setOnAction(e -> {
-            display.setMethod("/");
-            this.paint();
+            display.setMethod(Display.DISPLAY_DIVIDE);
+            display.paint();
         });
         layout.add(divide, 1, 0);
 
         // Multiple button
-        Button multiple = new Button("*");
+        Button multiple = new Button(Display.DISPLAY_MULTIPLY);
         multiple.setMaxWidth(Double.MAX_VALUE);
         multiple.setMaxHeight(Double.MAX_VALUE);
         multiple.setOnAction(e -> {
-            display.setMethod("*");
-            this.paint();
+            display.setMethod(Display.DISPLAY_MULTIPLY);
+            display.paint();
         });
         layout.add(multiple, 2, 0);
 
         // Minus button
-        Button minus = new Button("-");
+        Button minus = new Button(Display.DISPLAY_SUBTRACT);
         minus.setMaxWidth(Double.MAX_VALUE);
         minus.setMaxHeight(Double.MAX_VALUE);
         minus.setOnAction(e -> {
-            display.setMethod("-");
-            this.paint();
+            display.setMethod(Display.DISPLAY_SUBTRACT);
+            display.paint();
         });
         layout.add(minus, 3, 1);
 
         // Add button
-        Button add = new Button("+");
+        Button add = new Button(Display.DISPLAY_ADD);
         add.setMaxWidth(Double.MAX_VALUE);
         add.setMaxHeight(Double.MAX_VALUE);
         add.setOnAction(e -> {
-            display.setMethod("+");
-            this.paint();
+            display.setMethod(Display.DISPLAY_ADD);
+            display.paint();
         });
         layout.add(add, 3, 0);
 
         // Clear button
-        Button clear = new Button("c");
+        Button clear = new Button(Display.DISPLAY_CANCEL);
         clear.setMaxWidth(Double.MAX_VALUE);
         clear.setMaxHeight(Double.MAX_VALUE);
         clear.setOnAction(e -> {
-            display.setMethod("c");
+            display.setMethod(Display.DISPLAY_CANCEL);
             display.calculate();
-            this.paint();
+            display.paint();
         });
         layout.add(clear, 0, 0);
 
         // Equals button
-        Button equal = new Button("=");
+        Button equal = new Button(Display.DISPLAY_EQUAL);
         equal.setMaxWidth(Double.MAX_VALUE);
         equal.setMaxHeight(Double.MAX_VALUE);
         equal.setOnAction(e -> {
             display.calculate();
-            this.paint();
+            display.paint();
         });
         layout.add(equal, 3, 1);
         GridPane.setRowSpan(equal, 4);
 
+        // Host and port field
+        hostAndPortField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.contains(":")) {
+                return;
+            }
+            String[] split = newValue.split(":");
+            if (split.length == 2) {
+                display.setHost(split[0].trim());
+                display.setPort(Integer.parseInt(split[1].trim()));
+            }
+        });
         return layout;
     }
 
-    private static class Display {
+    private class Display {
+        private static final String DISPLAY_EQUAL = "=";
         private static final String DISPLAY_DIVIDE = "/";
         private static final String DISPLAY_MULTIPLY = "*";
         private static final String DISPLAY_SUBTRACT = "-";
@@ -289,8 +301,8 @@ public class ThriftCalculatorClient extends Application {
             }
         }
 
-        private void calculate(Operation operation, String s) throws TException {
-            message = total + " " + s + " " + current + " = ";
+        private void calculate(Operation operation, String method) throws TException {
+            message = total + " " + method + " " + current + " = ";
             total = calculateOnServer(total, operation, current);
             message += total;
             current = 0;
@@ -319,7 +331,7 @@ public class ThriftCalculatorClient extends Application {
                 int previous = historySequence.decrementAndGet();
                 if (previous > 0) {
                     total = historyOnServer(previous);
-                    message = "Moved to previous total "  + total;
+                    message = "Moved to previous total " + total;
                 } else {
                     message = "No previous total";
                 }
@@ -328,6 +340,13 @@ public class ThriftCalculatorClient extends Application {
                 message = e.getMessage();
                 historySequence.incrementAndGet();
             }
+        }
+
+        public void paint() {
+            paintMessage();
+            paintCurrent();
+            paintTotal();
+            paintHostAndPort();
         }
 
         private int historyOnServer(int key) throws TException {
@@ -358,36 +377,24 @@ public class ThriftCalculatorClient extends Application {
             method = "";
         }
 
-        public Label getMessage() {
-            return new Label(message);
+        private void paintMessage() {
+            messageLabel.setText(message);
         }
 
-        public Label getCurrent() {
-            return new Label("Current: " + Long.toString(current));
+        private void paintCurrent() {
+            currentLabel.setText("Current: " + Long.toString(current));
         }
 
-        public Label getTotal() {
-            return new Label("Total: " + Long.toString(total));
+        private void paintTotal() {
+            totalLabel.setText("Total: " + Long.toString(total));
         }
 
-        private TextField hostAndPortField() {
-            TextField hostAndPort = new TextField();
+        private void paintHostAndPort() {
             if (host.isEmpty()) {
-                hostAndPort.setPromptText("Enter host:port of Thrift calculator server");
+                hostAndPortField.setPromptText("Enter host:port of Thrift calculator server");
             } else {
-                hostAndPort.setText(host + ":" + port);
+                hostAndPortField.setText(host + ":" + port);
             }
-            hostAndPort.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.contains(":")) {
-                    return;
-                }
-                String[] split = newValue.split(":");
-                if (split.length == 2) {
-                    setHost(split[0].trim());
-                    setPort(Integer.parseInt(split[1].trim()));
-                }
-            });
-            return hostAndPort;
         }
     }
 }

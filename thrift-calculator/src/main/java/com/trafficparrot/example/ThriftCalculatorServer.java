@@ -26,12 +26,15 @@ import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 import static com.trafficparrot.example.ThriftCalculatorServerProperties.loadProperties;
 
 public class ThriftCalculatorServer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ThriftCalculatorServer.class);
 
     public static void main(String[] args) throws IOException, TTransportException {
         ThriftCalculatorServerProperties properties = loadProperties();
@@ -40,7 +43,7 @@ public class ThriftCalculatorServer {
         Processor<Calculator.Iface> processor = new Processor<>(new ThriftCalculatorHandler());
         TServerTransport serverTransport = new TServerSocket(nonTlsPort);
         TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
-        System.out.println("Starting Thrift calculator server on non TLS port " + nonTlsPort);
+        LOGGER.info("Starting Thrift calculator server on non TLS port " + nonTlsPort);
         server.serve();
     }
 }
