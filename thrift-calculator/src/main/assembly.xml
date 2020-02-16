@@ -16,6 +16,11 @@
             </includes>
         </fileSet>
         <fileSet>
+            <directory>${basedir}/src/main/resources/licenses</directory>
+            <outputDirectory>./licenses</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
+        <fileSet>
             <directory>${project.build.directory}</directory>
             <outputDirectory>./lib</outputDirectory>
             <includes>
