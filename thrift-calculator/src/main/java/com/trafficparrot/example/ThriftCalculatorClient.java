@@ -210,7 +210,7 @@ public class ThriftCalculatorClient extends Application {
             display.calculate();
             display.paint();
         });
-        layout.add(equal, 3, 1);
+        layout.add(equal, 3, 2);
         GridPane.setRowSpan(equal, 4);
 
         // Host and port field
@@ -262,7 +262,7 @@ public class ThriftCalculatorClient extends Application {
         }
 
         public void inputNumber(int input) {
-            current = input;
+            current = Integer.parseInt(current + "" + input);
         }
 
         public void setMethod(String method) {
