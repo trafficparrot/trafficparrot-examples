@@ -21,6 +21,11 @@
             <filtered>false</filtered>
         </fileSet>
         <fileSet>
+            <directory>${basedir}/src/main/thrift</directory>
+            <outputDirectory>./thrift</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
+        <fileSet>
             <directory>${project.build.directory}</directory>
             <outputDirectory>./lib</outputDirectory>
             <includes>
