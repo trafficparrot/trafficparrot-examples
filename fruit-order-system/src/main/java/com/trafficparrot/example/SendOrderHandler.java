@@ -37,6 +37,7 @@ class SendOrderHandler extends AbstractHandler {
                 response.getWriter().print(status ? "Success!" : "ERROR!");
                 baseRequest.setHandled(true);
             } else if (target.startsWith("/order-confirmations")) {
+                response.setHeader("Content-Type", "application/json; charset=utf-8");
                 response.getWriter().print(new Gson().toJson(getOrderConfirmations()));
                 baseRequest.setHandled(true);
             }
