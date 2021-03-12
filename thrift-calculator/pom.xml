@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <thrift.version>0.13.0</thrift.version>
+        <thrift.version>0.14.0</thrift.version>
         <thrift.calculator.client.main.class>com.trafficparrot.example.ThriftCalculatorClient</thrift.calculator.client.main.class>
         <thrift.calculator.server.main.class>com.trafficparrot.example.ThriftCalculatorServer</thrift.calculator.server.main.class>
         <javafx.version>11.0.2</javafx.version>
